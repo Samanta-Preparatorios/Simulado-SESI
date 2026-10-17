@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulado SESI-PE 2027 | Professora Samanta</title>
+
+<style>
+:root {
+  --orange: #f58220;
+  --dark: #171717;
+  --cream: #fff8f0;
+  --blue: #164e8a;
+  --green: #20734b;
+  --red: #b42318;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f3f4f6;
+  color: #202124;
+  font: 16px/1.6 Arial, sans-serif;
+}
+
+.wrap {
+  max-width: 1000px;
+  margin: auto;
+  padding: 18px;
+}
+
+.hero {
+  background: #080808;
+  color: white;
+  border-radius: 16px;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  border-bottom: 6px solid var(--orange);
+}
+
+.hero img {
+  width: min(100%, 400px);
+  max-height: 140px;
+  object-fit: contain;
+}
+
+.hero h1 {
+  margin: 0;
+  color: #ff9b39;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+}
+
+.panel {
+  background: white;
+  border-radius: 14px;
+  padding: 22px;
+  margin: 18px 0;
+  box-shadow: 0 3px 14px #0000000c;
+}
+
+.tag, .pill {
+  display: inline-block;
+  background: #fff0df;
+  color: #8c4300;
+  border-radius: 30px;
+  padding: 4px 10px;
+  font-size: .82rem;
+  font-weight: bold;
+}
+
+.instructions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.tile {
+  background: var(--cream);
+  border-left: 4px solid var(--orange);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.bar {
+  height: 9px;
+  background: #e5e7eb;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--orange);
+  transition: width .2s;
+}
+
+.qcard {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px;
+  margin: 15px 0;
+}
+
+.qcard h3 {
+  font-size: 1.05rem;
+  margin: 10px 0;
+}
+
+.opts {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.opts label {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  border: 1px solid #d7dce2;
+  padding: 10px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.opts label:hover {
+  border-color: var(--orange);
+  background: #fffaf5;
+}
+
+.opts input {
+  margin-top: 5px;
+  accent-color: var(--orange);
+}
+
+button {
+  background: var(--orange);
+  color: #171717;
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 18px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button.secondary {
+  background: #202124;
+  color: white;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.small {
+  font-size: .9rem;
+  color: #5f6368;
+}
+
+.visual {
+  border-radius: 12px;
+  background: #f8fafc;
+  padding: 14px;
+  margin: 12px 0;
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+}
+
+.visual figure {
+  margin: 0;
+}
+
+.visual svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 720px;
+  margin: auto;
+}
+
+.visual figcaption {
+  font-size: .82rem;
+  color: #5f6368;
+  margin-top: 8px;
+}
+
+.visual table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 260px;
+  margin: 10px 0;
+}
+
+.visual td,
+.visual th {
+  border: 1px solid #cbd5e1;
+  padding: 8px;
+  text-align: center;
+}
+
+.visual th {
+  background: #e7eff8;
+}
+
+.poster {
+  max-width: 620px;
+  margin: auto;
+}
+
+.visual-flex {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.visual-flex > div {
+  flex: 1;
+  min-width: 160px;
+}
+
+.metric {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--blue);
+}
+
+.answer {
+  background: #f7f9fc;
+  border-left: 4px solid var(--blue);
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+}
+
+.correct {
+  color: var(--green);
+  font-weight: bold;
+}
+
+.wrong {
+  color: var(--red);
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+.resultgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.score {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--blue);
+}
+
+.chartbox {
+  max-width: 330px;
+  margin: auto;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+}
+
+.meter {
+  height: 12px;
+  background: #eee;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.meter span {
+  display: block;
+  height: 100%;
+  background: var(--blue);
+}
+
+footer {
+  text-align: center;
+  color: #666;
+  font-size: .85rem;
+  padding: 24px;
+}
+
+@media (max-width: 600px) {
+  .wrap {
+    padding: 10px;
+  }
+
+  .panel {
+    padding: 15px;
+  }
+
+  .qcard {
+    padding: 13px;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="wrap">
+
+<header class="hero">
+  <img
+    src="Logo preparatorio1.jpeg"
+    alt="Professora Samanta — Cursos Preparatórios"
+  >
+  <div>
+    <h1>Simulado SESI-PE 2027</h1>
+    <p>Ensino Médio Integrado</p>
+    <p>Língua Portuguesa e Matemática</p>
+    <span class="tag">40 questões • diagnóstico individual</span>
+  </div>
+</header>
+
+<section class="panel">
+  <h2>Orientações antes de começar</h2>
+
+  <div class="instructions">
+    <div class="tile">
+      <b>01 · Organização</b><br>
+      São 20 questões de Português e 20 de Matemática.
+    </div>
+
+    <div class="tile">
+      <b>02 · Tempo sugerido</b><br>
+      Reserve 2 horas para responder e revisar.
+    </div>
+
+    <div class="tile">
+      <b>03 · Marcação</b><br>
+      Escolha apenas uma alternativa por questão.
+    </div>
+
+    <div class="tile">
+      <b>04 · Correção</b><br>
+      Ao finalizar, veja os comentários e o diagnóstico.
+    </div>
+  </div>
+
+  <p class="small">
+    Material autoral para treino, com base no conteúdo programático
+    do Anexo III do edital SESI-PE/SENAI-PE 2027.
+    Não corresponde à prova oficial.
+  </p>
+
+  <div style="display:flex;justify-content:space-between;gap:10px">
+    <b id="progressText">0 de 40 respondidas</b>
+    <span class="small">Progresso</span>
+  </div>
+
+  <div class="bar">
+    <span id="progress"></span>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>Parte I — Língua Portuguesa</h2>
+  <p class="small">
+    Interpretação textual, gêneros, linguagem, gramática,
+    sintaxe e figuras de linguagem.
+  </p>
+  <div id="portuguese"></div>
+</section>
+
+<section class="panel">
+  <h2>Parte II — Matemática</h2>
+  <p class="small">
+    Situações-problema com números, álgebra, medidas, geometria,
+    tabelas e gráficos.
+  </p>
+  <div id="math"></div>
+</section>
+
+<section class="panel">
+  <div class="actions">
+    <button id="grade">Corrigir simulado</button>
+    <button class="secondary" id="reset">Refazer do zero</button>
+  </div>
+
+  <p class="small">
+    As respostas são processadas localmente no navegador.
+  </p>
+</section>
+
+<section id="results" class="panel hidden">
+  <h2>Seu diagnóstico de aprendizagem</h2>
+
+  <div class="resultgrid">
+    <div>
+      <div class="small">Pontuação total</div>
+      <div class="score" id="totalScore">—</div>
+      <div id="summary"></div>
+    </div>
+
+    <div class="chartbox">
+      <canvas
+        id="pie"
+        width="320"
+        height="270"
+        aria-label="Gráfico de pizza de acertos e erros"
+      ></canvas>
+      <p class="small" style="text-align:center">
+        Distribuição de acertos e erros
+      </p>
+    </div>
+  </div>
+
+  <div class="resultgrid">
+    <div>
+      <h3>Por disciplina</h3>
+      <div id="subjects"></div>
+    </div>
+
+    <div>
+      <h3>Conteúdos por desempenho</h3>
+      <div id="topics"></div>
+    </div>
+  </div>
+
+  <h3>Plano de estudo orientado</h3>
+  <div id="study"></div>
+
+  <h3>Gabarito comentado</h3>
+  <div id="answers"></div>
+</section>
+
+<footer>
+  Curso Preparatório Professora Samanta • Simulado autoral
+</footer>
+
+</main>
+
+<script>
+const questions = [
+{
+s:"Português",t:"Interpretação textual",
+q:"Uma associação de moradores divulga um cartaz para incentivar o uso da praça recém-reformada. Considerando a mensagem verbal e os elementos visuais, qual é o principal objetivo da campanha?",
+o:["Informar que a praça ficará fechada aos sábados.","Convidar os moradores a participar das atividades e valorizar a praça.","Proibir a realização de eventos culturais no bairro.","Divulgar uma mudança no transporte público.","Vender ingressos para um show particular."],
+a:1,e:"O cartaz combina convite, data e atividades para incentivar a comunidade a ocupar e cuidar da praça."
+},
+{
+s:"Português",t:"Gêneros textuais",
+q:"O jornal da escola publica uma matéria sobre o desperdício de água. O texto apresenta números de uma pesquisa, entrevista estudantes e inclui a fala de uma especialista. Qual gênero textual é o mais provável?",
+o:["Conto","Receita","Reportagem","Poema lírico","Bilhete pessoal"],
+a:2,e:"A reportagem aprofunda um assunto, reunindo dados, entrevistas e diferentes fontes."
+},
+{
+s:"Português",t:"Linguagem formal e informal",
+q:"Uma estudante precisa escrever à coordenação para perguntar quando ocorrerá a recuperação bimestral. Qual trecho é mais adequado ao contexto formal?",
+o:["E aí, diretora, resolve isso pra gente.","A gente tá precisando que vocês deem um jeito.","Solicito, por gentileza, informações sobre o calendário de avaliações.","Manda logo o calendário aí.","Valeu, qualquer coisa eu grito."],
+a:2,e:"A formulação é objetiva, respeitosa e apropriada para uma comunicação institucional."
+},
+{
+s:"Português",t:"Texto argumentativo",
+q:"Em uma reunião do grêmio, estudantes defendem a instalação de coletores seletivos. A mensagem afirma: “A escola deve ampliar a coleta seletiva, pois isso reduz resíduos e estimula hábitos responsáveis”. Qual trecho apresenta a tese defendida?",
+o:["Os aterros ficam longe.","A escola deve ampliar a coleta seletiva.","Todo resíduo é reciclável.","Os hábitos nunca mudam.","A coleta seletiva aumenta os resíduos."],
+a:1,e:"A tese é a posição defendida no texto; a expressão iniciada por “pois” apresenta justificativas."
+},
+{
+s:"Português",t:"Texto publicitário",
+q:"Uma campanha da escola usa um cartaz para diminuir o consumo de garrafas descartáveis. Que finalidade predomina nesse texto publicitário?",
+o:["Convencer o público a adotar uma atitude.","Narrar uma aventura fictícia.","Descrever uma paisagem sem intenção.","Registrar uma conversa íntima.","Explicar uma regra gramatical."],
+a:0,e:"O imperativo “Leve” e o slogan procuram convencer o público a adotar um comportamento."
+},
+{
+s:"Português",t:"Substantivo e adjetivo",
+q:"No mural de uma biblioteca comunitária, lê-se: “A biblioteca acolhedora recebeu novos leitores”. As palavras “biblioteca” e “acolhedora” são, respectivamente:",
+o:["Adjetivo e verbo","Substantivo e adjetivo","Verbo e substantivo","Pronome e advérbio","Substantivo e conjunção"],
+a:1,e:"“Biblioteca” nomeia um lugar e é substantivo; “acolhedora” caracteriza esse substantivo e é adjetivo."
+},
+{
+s:"Português",t:"Pronomes",
+q:"Após organizar uma feira de ciências, os estudantes publicaram: “Os estudantes organizaram a feira e eles divulgaram o evento”. Nesse contexto, o pronome “eles” retoma:",
+o:["A feira","O evento","Os estudantes","A organização","A divulgação"],
+a:2,e:"O pronome pessoal “eles” retoma o grupo de estudantes mencionado anteriormente, evitando repetição."
+},
+{
+s:"Português",t:"Verbo e advérbio",
+q:"No relatório de uma equipe de robótica, aparece a frase: “A equipe apresentou rapidamente o protótipo aos visitantes”. A palavra “rapidamente” indica:",
+o:["Quem respondeu","O que foi respondido","Quando a equipe foi criada","O modo como respondeu","A quantidade de equipes"],
+a:3,e:"O advérbio “rapidamente” modifica o verbo “apresentou” e indica o modo como a ação ocorreu."
+},
+{
+s:"Português",t:"Conjunção",
+q:"Um aviso informa: “O ônibus escolar atrasou, mas todos chegaram antes do início da visita”. Nesse contexto, a conjunção “mas” estabelece uma relação de:",
+o:["Causa","Adição","Oposição","Conclusão","Explicação"],
+a:2,e:"“Mas” é uma conjunção adversativa e introduz contraste entre o atraso e a chegada a tempo."
+},
+{
+s:"Português",t:"Sujeito e predicado",
+q:"Durante uma ação de recuperação de uma praça, a notícia diz: “Os voluntários plantaram mudas no parque”. Qual é o sujeito da oração?",
+o:["Plantaram mudas","No parque","Mudas no parque","Os voluntários","Os voluntários plantaram"],
+a:3,e:"A pergunta “quem plantou mudas?” leva ao sujeito “Os voluntários”."
+},
+{
+s:"Português",t:"Transitividade verbal",
+q:"Na prestação de contas da feira, a tesoureira escreveu: “A estudante entregou o relatório à professora”. Quanto à transitividade, o verbo “entregou” exige:",
+o:["Apenas sujeito","Objeto direto e objeto indireto","Somente predicativo","Apenas adjunto adverbial","Nenhum complemento"],
+a:1,e:"A estudante entregou algo (o relatório) a alguém (à professora), portanto o verbo é transitivo direto e indireto."
+},
+{
+s:"Português",t:"Verbo de ligação",
+q:"Depois de uma oficina de leitura, a professora descreveu a sala: “A sala permaneceu organizada durante toda a atividade”. Na oração, “permaneceu” funciona como:",
+o:["Verbo de ligação","Verbo transitivo direto","Verbo impessoal","Substantivo","Conjunção"],
+a:0,e:"O verbo liga o sujeito “a sala” ao estado “organizada”; nesse contexto, é verbo de ligação."
+},
+{
+s:"Português",t:"Vozes verbais",
+q:"A turma quer destacar o resultado do projeto, e não quem o realizou. A frase “Os alunos concluíram o projeto” deve ser reescrita na voz passiva analítica como:",
+o:["O projeto concluiu os alunos.","Concluiu-se os alunos pelo projeto.","O projeto foi concluído pelos alunos.","Os alunos foram concluídos pelo projeto.","O projeto é concluir os alunos."],
+a:2,e:"O objeto direto “o projeto” passa a sujeito paciente: “O projeto foi concluído pelos alunos”."
+},
+{
+s:"Português",t:"Pontuação e vocativo",
+q:"Uma professora chama a turma antes de iniciar uma atividade, usando o vocativo “turma”. Qual alternativa pontua corretamente essa fala?",
+o:["Vamos, turma, iniciar a atividade.","Vamos turma iniciar, a atividade.","Vamos turma, iniciar a atividade.","Vamos, turma iniciar a atividade.","Vamos turma iniciar a, atividade."],
+a:0,e:"O vocativo “turma” deve ficar isolado por vírgulas."
+},
+{
+s:"Português",t:"Metáfora",
+q:"Em um cartaz da biblioteca aparece a frase “A leitura é uma janela para outros mundos”. A expressão produz sentido figurado por meio de:",
+o:["Hipérbole literal","Metáfora","Eufemismo","Antítese","Onomatopeia"],
+a:1,e:"A leitura é associada implicitamente a uma janela, sem o conectivo “como”; trata-se de metáfora."
+},
+{
+s:"Português",t:"Comparação",
+q:"Ao comentar a rapidez com que uma notícia sobre a feira se espalhou, um estudante escreveu: “A notícia correu pela escola como fogo”. A figura de linguagem usada é:",
+o:["Personificação","Paradoxo","Comparação","Eufemismo","Sinestesia"],
+a:2,e:"A palavra “como” estabelece uma comparação explícita."
+},
+{
+s:"Português",t:"Hipérbole",
+q:"Na fila para a inscrição em uma oficina, alguém comenta: “Esperei um século para conseguir minha vaga!”. A expressão exagerada constitui:",
+o:["Hipérbole","Metonímia","Antítese","Eufemismo","Personificação"],
+a:0,e:"A duração foi exagerada intencionalmente para enfatizar a demora: é hipérbole."
+},
+{
+s:"Português",t:"Regência verbal",
+q:"Ao produzir um comunicado para o mural da escola, qual frase está de acordo com a regência verbal da norma-padrão?",
+o:["Prefiro mais matemática do que português.","Assisti o filme ontem, no sentido de ver.","Obedeço às orientações da professora.","Cheguei no escola cedo.","Aspiro o cargo, no sentido de desejar, sem preposição."],
+a:2,e:"O verbo “obedecer” rege a preposição “a”: “obedecer às orientações”."
+},
+{
+s:"Português",t:"Orações coordenadas",
+q:"Depois de revisar o conteúdo, um estudante escreveu: “Estudei bastante, portanto consegui resolver a questão”. A segunda oração expressa:",
+o:["Alternância","Conclusão","Condição","Concessão","Comparação"],
+a:1,e:"“Portanto” introduz a conclusão decorrente do fato apresentado na primeira oração."
+},
+{
+s:"Português",t:"Oração subordinada",
+q:"Durante um jogo ao ar livre, a partida foi interrompida pela chuva. A notícia diz: “Quando a chuva parou, o jogo recomeçou”. A oração inicial expressa circunstância de:",
+o:["Finalidade","Causa","Tempo","Consequência","Condição"],
+a:2,e:"A oração “Quando a chuva parou” situa no tempo o recomeço do jogo."
+},
+
+{
+s:"Matemática",t:"Frações e decimais",
+q:"Uma campanha de arrecadação estabeleceu a meta de 250 kg de alimentos. A turma já alcançou 3/5 da meta. Quantos quilogramas foram arrecadados?",
+o:["100 kg","125 kg","150 kg","175 kg","200 kg"],
+a:2,e:"Calcula-se 3/5 × 250 = 3 × 50 = 150 kg."
+},
+{
+s:"Matemática",t:"Múltiplos e divisores",
+q:"A escola recebeu 48 cadernos e 60 lápis. A equipe deseja montar o maior número possível de kits idênticos, sem sobras. Quantos kits poderá montar?",
+o:["6","10","12","15","20"],
+a:2,e:"O número máximo de kits é o MDC(48, 60) = 12. Cada kit terá 4 cadernos e 5 lápis."
+},
+{
+s:"Matemática",t:"Potenciação e radiciação",
+q:"Um programa precisa calcular √144 + 2³. Qual é o resultado?",
+o:["16","18","20","22","24"],
+a:2,e:"√144 = 12 e 2³ = 8; logo, 12 + 8 = 20."
+},
+{
+s:"Matemática",t:"Notação científica",
+q:"Um equipamento mede uma distância de 4 500 000 metros. Qual é a notação científica correta?",
+o:["45 × 10⁵ m","4,5 × 10⁶ m","0,45 × 10⁷ m","4,5 × 10⁵ m","450 × 10⁴ m"],
+a:1,e:"Na notação científica, o número inicial deve ficar entre 1 e 10: 4,5 × 10⁶ m."
+},
+{
+s:"Matemática",t:"Equação do 1º grau",
+q:"Um ingresso custava x reais e teve desconto de R$ 8. Após o desconto, a estudante pagou R$ 37. Qual era o preço original?",
+o:["R$ 29","R$ 35","R$ 37","R$ 45","R$ 48"],
+a:3,e:"A equação é x − 8 = 37. Somando 8 aos dois lados, x = 45 reais."
+},
+{
+s:"Matemática",t:"Equação do 2º grau",
+q:"Uma horta terá formato retangular e área de 40 m². Os lados medem x e x + 3 metros. Considerando apenas a solução positiva, quanto mede o menor lado?",
+o:["4 m","5 m","6 m","8 m","10 m"],
+a:1,e:"x(x + 3) = 40. Então x² + 3x − 40 = 0. Fatorando: (x + 8)(x − 5) = 0. A solução positiva é 5 m."
+},
+{
+s:"Matemática",t:"Sistema linear",
+q:"Na cantina, dois sucos e um sanduíche custam R$ 19. Um suco e um sanduíche custam R$ 12. Quanto custa um suco?",
+o:["R$ 5","R$ 6","R$ 7","R$ 8","R$ 9"],
+a:2,e:"Subtraindo a segunda equação da primeira, sobra o preço de um suco: 19 − 12 = R$ 7."
+},
+{
+s:"Matemática",t:"Sequências",
+q:"A equipe de tecnologia organiza os números dos armários segundo o padrão 5, 9, 13, 17, ... Qual será o 12º número?",
+o:["45","47","49","51","53"],
+a:2,e:"A razão é 4: a₁₂ = 5 + (12 − 1) × 4 = 49."
+},
+{
+s:"Matemática",t:"Razão e proporção",
+q:"Em um mapa, 2 cm representam 5 km na realidade. Se a distância entre o portão e o mirante mede 7,2 cm no mapa, qual é a distância real?",
+o:["12 km","15 km","18 km","20 km","22 km"],
+a:2,e:"Cada centímetro representa 2,5 km; assim, 7,2 × 2,5 = 18 km."
+},
+{
+s:"Matemática",t:"Divisão proporcional",
+q:"Uma verba de R$ 600 será distribuída entre duas equipes na razão 2:3. Quanto receberá a equipe que corresponde à maior parte?",
+o:["R$ 120","R$ 240","R$ 300","R$ 360","R$ 400"],
+a:3,e:"A razão soma 5 partes. Cada parte vale 600 ÷ 5 = 120. A maior parte vale 3 × 120 = R$ 360."
+},
+{
+s:"Matemática",t:"Regra de três",
+q:"Quatro impressoras iguais produzem 600 páginas em 5 minutos. Se duas impressoras funcionarem durante os mesmos 5 minutos, quantas páginas produzirão?",
+o:["150","200","250","300","600"],
+a:3,e:"Com metade do número de impressoras e o mesmo tempo, a produção cai pela metade: 600 ÷ 2 = 300 páginas."
+},
+{
+s:"Matemática",t:"Porcentagem",
+q:"Uma mochila custa R$ 160 e recebe desconto de 15%. Qual é o preço pago após o desconto?",
+o:["R$ 120","R$ 128","R$ 136","R$ 140","R$ 145"],
+a:2,e:"15% de 160 = 24 reais. O preço final é 160 − 24 = R$ 136."
+},
+{
+s:"Matemática",t:"Média aritmética",
+q:"Em quatro avaliações de um projeto, um estudante obteve 6, 7, 8 e 9. Qual é a média aritmética?",
+o:["6,5","7","7,5","8","8,5"],
+a:2,e:"(6 + 7 + 8 + 9) ÷ 4 = 30 ÷ 4 = 7,5."
+},
+{
+s:"Matemática",t:"Função do 1º grau",
+q:"Um aplicativo cobra uma taxa fixa de R$ 5 mais R$ 2 por quilômetro. A função é C(x) = 5 + 2x. Qual é o custo de uma corrida de 8 km?",
+o:["R$ 13","R$ 16","R$ 18","R$ 21","R$ 26"],
+a:3,e:"C(8) = 5 + 2 × 8 = R$ 21."
+},
+{
+s:"Matemática",t:"Sistema métrico",
+q:"Um painel tem área de 2,5 m². Qual é essa área em centímetros quadrados?",
+o:["250 cm²","2 500 cm²","25 000 cm²","250 000 cm²","2 500 000 cm²"],
+a:2,e:"1 m² = 10 000 cm². Logo, 2,5 m² = 25 000 cm²."
+},
+{
+s:"Matemática",t:"Ângulos",
+q:"Uma placa forma dois ângulos suplementares que medem x e 3x. Qual é a medida do maior ângulo?",
+o:["45°","90°","120°","135°","150°"],
+a:3,e:"x + 3x = 180°. Assim, x = 45° e o maior ângulo mede 3 × 45° = 135°."
+},
+{
+s:"Matemática",t:"Triângulo retângulo",
+q:"Uma escada de 10 m é apoiada em uma parede, com a base a 6 m da parede. A que altura ela alcança a parede?",
+o:["4 m","6 m","8 m","10 m","12 m"],
+a:2,e:"Pelo Teorema de Pitágoras, h² + 6² = 10². Então h² = 64 e h = 8 m."
+},
+{
+s:"Matemática",t:"Áreas planas",
+q:"Uma horta mede 12 m por 7 m. Dentro dela, haverá um canteiro quadrado de 2 m de lado, sem grama. Qual área receberá grama?",
+o:["72 m²","76 m²","80 m²","84 m²","88 m²"],
+a:2,e:"A área total é 12 × 7 = 84 m². O canteiro ocupa 4 m². A área gramada será 84 − 4 = 80 m²."
+},
+{
+s:"Matemática",t:"Volume",
+q:"Uma caixa retangular mede 30 cm de comprimento, 20 cm de largura e 10 cm de altura. Qual é seu volume interno?",
+o:["600 cm³","1 000 cm³","3 000 cm³","6 000 cm³","60 000 cm³"],
+a:3,e:"O volume é comprimento × largura × altura: 30 × 20 × 10 = 6 000 cm³."
+},
+{
+s:"Matemática",t:"Probabilidade e gráficos",
+q:"Uma votação registrou 12 votos para a opção A, 8 para B e 20 para C. Se um voto for escolhido ao acaso, qual é a probabilidade de corresponder à opção B?",
+o:["10%","20%","25%","30%","40%"],
+a:1,e:"Há 12 + 8 + 20 = 40 votos. A probabilidade é 8/40 = 20%."
+}
+];
+
+function visual(i) {
+  const poster = `
+  <div class="visual">
+    <figure class="poster">
+      <svg viewBox="0 0 640 260" role="img"
+      aria-label="Cartaz Praça Viva">
+        <rect width="640" height="260" rx="16" fill="#123f34"/>
+        <rect x="14" y="14" width="612" height="232" rx="12" fill="#fef3c7"/>
+        <circle cx="550" cy="65" r="24" fill="#f58220"/>
+        <path d="M30 210 Q150 150 260 210 T600 210 V230 H30Z"
+        fill="#8ecf8b"/>
+        <text x="35" y="48" font-size="17" fill="#123f34">
+          CAMPANHA DA COMUNIDADE
+        </text>
+        <text x="35" y="98" font-size="42" font-weight="900"
+        fill="#123f34">PRAÇA VIVA!</text>
+        <text x="35" y="132" font-size="20" fill="#123f34">
+          Sábado • 16h
+        </text>
+        <text x="35" y="161" font-size="16" fill="#123f34">
+          Música, feira de troca e atividades para famílias.
+        </text>
+        <rect x="35" y="183" width="300" height="37" rx="18"
+        fill="#f58220"/>
+        <text x="185" y="207" text-anchor="middle"
+        font-size="15" font-weight="800" fill="#171717">
+          O espaço é de todos. Participe!
+        </text>
+      </svg>
+      <figcaption>
+        Cartaz ilustrativo produzido para o simulado.
+        Observe o slogan, a data e o convite ao público.
+      </figcaption>
+    </figure>
+  </div>`;
+
+  if (i === 0) return poster;
+
+  if (i === 1) return `
+  <div class="visual">
+    <b>Pesquisa do jornal escolar</b>
+    <table>
+      <tr><th>Informação</th><th>Resultado</th></tr>
+      <tr><td>Uso de garrafas reutilizáveis</td><td>62%</td></tr>
+      <tr><td>Compra de garrafas descartáveis</td><td>38%</td></tr>
+    </table>
+    <p class="small">
+      A matéria também entrevista estudantes e uma especialista.
+    </p>
+  </div>`;
+
+  if (i === 3) return `
+  <div class="visual">
+    <b>Coleta seletiva na escola</b>
+    <div class="visual-flex">
+      <div style="padding:18px;background:#247a4b;color:white;
+      text-align:center;border-radius:9px">PAPEL</div>
+      <div style="padding:18px;background:#e9b949;
+      text-align:center;border-radius:9px">PLÁSTICO</div>
+      <div style="padding:18px;background:#3575bb;color:white;
+      text-align:center;border-radius:9px">METAL</div>
+    </div>
+    <p>Reduzir resíduos e estimular hábitos responsáveis.</p>
+  </div>`;
+
+  if (i === 4) return `
+  <div class="visual">
+    <div class="poster" style="background:#fff0df;padding:22px;
+    border-radius:12px;text-align:center">
+      <span class="pill">CAMPANHA AMBIENTAL</span>
+      <h2>LEVE SUA GARRAFA</h2>
+      <h3 style="color:#247a4b">Menos plástico, mais futuro!</h3>
+      <p>Pequenas escolhas fazem diferença.</p>
+    </div>
+  </div>`;
+
+  if (i === 14) return `
+  <div class="visual">
+    <div style="background:#123f34;color:#fff8f0;padding:22px;
+    border-radius:12px;text-align:center">
+      <h3>CLUBE DE LEITURA</h3>
+      <p style="font-size:1.35rem;font-weight:800">
+        A leitura é uma janela para outros mundos.
+      </p>
+    </div>
+  </div>`;
+
+  if (i === 20) return `
+  <div class="visual">
+    <b>Meta solidária: 250 kg</b>
+    <p>Progresso: 3/5 da meta</p>
+    <div style="height:22px;background:#e5e7eb;border-radius:99px;
+    overflow:hidden">
+      <div style="height:100%;width:60%;background:#f58220"></div>
+    </div>
+    <p class="small">Cada quinto equivale a 250 ÷ 5 kg.</p>
+  </div>`;
+
+  if (i === 21) return `
+  <div class="visual">
+    <b>Materiais disponíveis</b>
+    <table>
+      <tr><th>Material</th><th>Quantidade</th></tr>
+      <tr><td>Cadernos</td><td>48</td></tr>
+      <tr><td>Lápis</td><td>60</td></tr>
+    </table>
+    Todos os kits devem ser iguais e não pode haver sobras.
+  </div>`;
+
+  if (i === 23) return `
+  <div class="visual">
+    <span class="pill">Valor medido</span>
+    <p class="metric">4 500 000 m</p>
+    <p>Forma compacta:</p>
+    <p class="metric">4,5 × 10⁶ m</p>
+  </div>`;
+
+  if (i === 24 || i === 31) return `
+  <div class="visual">
+    <div class="visual-flex">
+      <div>
+        <b>${i === 24 ? "Ingresso da feira" : "Mochila escolar"}</b>
+        <p class="metric">${i === 24 ? "R$ 37 pagos" : "R$ 160,00"}</p>
+      </div>
+      <div style="background:#247a4b;color:white;padding:20px;
+      border-radius:10px;text-align:center">
+        <b>${i === 24 ? "DESCONTO" : "DESCONTO DE"}</b>
+        <div class="metric" style="color:white">
+          ${i === 24 ? "R$ 8" : "15%"}
+        </div>
+      </div>
+    </div>
+  </div>`;
+
+  if (i === 26) return `
+  <div class="visual">
+    <b>Preços da cantina</b>
+    <table>
+      <tr><th>Pedido</th><th>Itens</th><th>Total</th></tr>
+      <tr><td>1</td><td>2 sucos + 1 sanduíche</td><td>R$ 19</td></tr>
+      <tr><td>2</td><td>1 suco + 1 sanduíche</td><td>R$ 12</td></tr>
+    </table>
+  </div>`;
+
+  if (i === 27) return `
+  <div class="visual">
+    <div class="visual-flex">
+      ${[5,9,13,17].map(n => `
+        <div style="flex:1;background:#dceafe;color:#164e8a;
+        font-size:1.5rem;font-weight:800;text-align:center;
+        padding:12px;border-radius:8px">${n}</div>
+      `).join("")}
+      <div style="font-size:1.5rem">…</div>
+    </div>
+    <p class="small">Observe o aumento constante entre os termos.</p>
+  </div>`;
+
+  if (i === 28) return `
+  <div class="visual">
+    <b>Mapa esquemático da trilha ecológica</b>
+    <div style="background:#eef6f1;padding:20px;border-radius:10px">
+      PORTÃO
+      <div style="height:6px;background:#65a66e;
+      margin:14px 0;border-radius:10px"></div>
+      MIRANTE
+    </div>
+    <p>Escala: 2 cm no mapa = 5 km reais.</p>
+  </div>`;
+
+  if (i === 29) return `
+  <div class="visual">
+    <b>Distribuição proporcional de R$ 600</b>
+    <div class="visual-flex">
+      <div style="flex:2;background:#164e8a;color:white;
+      padding:14px;text-align:center;border-radius:8px">2 partes</div>
+      <div style="flex:3;background:#f58220;color:#171717;
+      padding:14px;text-align:center;border-radius:8px">3 partes</div>
+    </div>
+    <p class="small">O total representa 5 partes iguais.</p>
+  </div>`;
+
+  if (i === 30) return `
+  <div class="visual">
+    <div class="visual-flex">
+      <div><b>4 impressoras</b><p>600 páginas</p><p>5 minutos</p></div>
+      <div style="font-size:1.5rem">→</div>
+      <div><b>2 impressoras</b><p>? páginas</p><p>5 minutos</p></div>
+    </div>
+  </div>`;
+
+  if (i === 32) return `
+  <div class="visual">
+    <b>Notas das avaliações</b>
+    <table>
+      <tr><th>Avaliação</th><th>Nota</th></tr>
+      <tr><td>1</td><td>6</td></tr>
+      <tr><td>2</td><td>7</td></tr>
+      <tr><td>3</td><td>8</td></tr>
+      <tr><td>4</td><td>9</td></tr>
+    </table>
+  </div>`;
+
+  if (i === 33) return `
+  <div class="visual">
+    <b>Custo de uma corrida</b>
+    <svg viewBox="0 0 500 170" role="img"
+    aria-label="Gráfico crescente do custo conforme a distância">
+      <path d="M45 20V135H470" stroke="#475569" stroke-width="2"
+      fill="none"/>
+      <path d="M45 120L140 100L235 80L330 60L425 40"
+      stroke="#f58220" stroke-width="4" fill="none"/>
+      <text x="10" y="20" font-size="12" fill="#164e8a">Custo</text>
+      <text x="365" y="160" font-size="12" fill="#164e8a">Distância</text>
+      <text x="250" y="25" font-size="13" fill="#202124">C(x)=5+2x</text>
+    </svg>
+  </div>`;
+
+  if (i === 34) return `
+  <div class="visual">
+    <b>Referência para conversões</b>
+    <table>
+      <tr><th>Unidade</th><th>Equivalência</th></tr>
+      <tr><td>1 m</td><td>100 cm</td></tr>
+      <tr><td>1 m²</td><td>10 000 cm²</td></tr>
+      <tr><td>1 L</td><td>1 000 mL</td></tr>
+      <tr><td>1 m³</td><td>1 000 L</td></tr>
+    </table>
+  </div>`;
+
+  if (i === 35) return `
+  <div class="visual">
+    <b>Ângulos suplementares</b>
+    <svg viewBox="0 0 500 160" role="img"
+    aria-label="Ângulos x e 3x sobre uma linha reta">
+      <path d="M30 120H470" stroke="#475569" stroke-width="3"/>
+      <path d="M250 120L140 25M250 120L370 25"
+      stroke="#164e8a" stroke-width="4"/>
+      <text x="170" y="100" font-size="22" fill="#8c4300">x</text>
+      <text x="310" y="100" font-size="22" fill="#8c4300">3x</text>
+      <text x="250" y="150" text-anchor="middle"
+      font-size="14" fill="#475569">Linha reta: 180°</text>
+    </svg>
+  </div>`;
+
+  if (i === 36) return `
+  <div class="visual">
+    <b>Escada apoiada na parede</b>
+    <svg viewBox="0 0 500 180" role="img"
+    aria-label="Triângulo retângulo com base de 6 metros e hipotenusa de 10">
+      <path d="M60 145H340V20" stroke="#475569" stroke-width="4"
+      fill="none"/>
+      <path d="M60 145L340 20" stroke="#f58220" stroke-width="5"/>
+      <text x="175" y="168" font-size="16" fill="#164e8a">6 m</text>
+      <text x="200" y="65" font-size="16" fill="#8c4300">10 m</text>
+      <text x="355" y="90" font-size="16" fill="#164e8a">h = ?</text>
+    </svg>
+  </div>`;
+
+  if (i === 37) return `
+  <div class="visual">
+    <b>Planta da horta</b>
+    <svg viewBox="0 0 500 190" role="img"
+    aria-label="Horta retangular de 12 por 7 metros com canteiro de 2 por 2 metros">
+      <rect x="70" y="35" width="350" height="120"
+      fill="#a8d5a2" stroke="#247a4b" stroke-width="3"/>
+      <rect x="290" y="90" width="55" height="55"
+      fill="#b98356" stroke="#754c2a" stroke-width="2"/>
+      <text x="245" y="25" text-anchor="middle"
+      font-size="16" fill="#164e8a">12 m</text>
+      <text x="28" y="100" font-size="15" fill="#164e8a">7 m</text>
+      <text x="315" y="120" text-anchor="middle"
+      font-size="12" fill="white">2 × 2 m</text>
+    </svg>
+    <p class="small">Subtraia a área do canteiro da área total.</p>
+  </div>`;
+
+  if (i === 38) return `
+  <div class="visual">
+    <b>Caixa retangular</b>
+    <svg viewBox="0 0 500 180" role="img"
+    aria-label="Caixa retangular com comprimento de 30, largura de 20 e altura de 10 centímetros">
+      <path d="M100 60L260 25L405 65L245 105Z"
+      fill="#dceafe" stroke="#164e8a" stroke-width="2"/>
+      <path d="M100 60V125L245 165V105Z"
+      fill="#b9d1f5" stroke="#164e8a" stroke-width="2"/>
+      <path d="M245 105V165L405 105V65Z"
+      fill="#8eb2e7" stroke="#164e8a" stroke-width="2"/>
+      <text x="170" y="48" font-size="15" fill="#164e8a">30 cm</text>
+      <text x="335" y="45" font-size="15" fill="#164e8a">20 cm</text>
+      <text x="270" y="150" font-size="15" fill="#164e8a">10 cm</text>
+    </svg>
+  </div>`;
+
+  if (i === 39) return `
+  <div class="visual">
+    <b>Votação para atividade de encerramento</b>
+    <table>
+      <tr><th>Opção</th><th>Votos</th></tr>
+      <tr><td>A — Gincana</td><td>12</td></tr>
+      <tr><td>B — Cinema</td><td>8</td></tr>
+      <tr><td>C — Piquenique</td><td>20</td></tr>
+    </table>
+    <div style="margin:12px 0">
+      <div>A <span style="display:inline-block;background:#164e8a;
+      width:30%;height:15px"></span> 12</div>
+      <div>B <span style="display:inline-block;background:#f58220;
+      width:20%;height:15px"></span> 8</div>
+      <div>C <span style="display:inline-block;background:#247a4b;
+      width:50%;height:15px"></span> 20</div>
+    </div>
+  </div>`;
+
+  return "";
+}
+
+const letters = ["A","B","C","D","E"];
+
+function render() {
+  const portuguese = document.getElementById("portuguese");
+  const math = document.getElementById("math");
+
+  questions.forEach((q, i) => {
+    const el = document.createElement("article");
+    el.className = "qcard";
+    el.id = "q" + i;
+
+    el.innerHTML = `
+      <span class="tag">
+        Questão ${String(i + 1).padStart(2,"0")} · ${q.t}
+      </span>
+      <h3>${q.q}</h3>
+      ${visual(i)}
+      <div class="opts">
+        ${q.o.map((o,j) => `
+          <label>
+            <input type="radio" name="q${i}" value="${j}">
+            <span><b>${letters[j]})</b> ${o}</span>
+          </label>
+        `).join("")}
+      </div>
+    `;
+
+    (q.s === "Português" ? portuguese : math).appendChild(el);
+  });
+
+  document.querySelectorAll('input[type="radio"]').forEach(input => {
+    input.addEventListener("change", updateProgress);
+  });
+}
+
+function updateProgress() {
+  const answered = questions.filter((q,i) =>
+    document.querySelector(`input[name="q${i}"]:checked`)
+  ).length;
+
+  document.getElementById("progressText").textContent =
+    `${answered} de 40 respondidas`;
+
+  document.getElementById("progress").style.width =
+    (answered / 40 * 100) + "%";
+}
+
+function pie(correct, incorrect) {
+  const canvas = document.getElementById("pie");
+  const ctx = canvas.getContext("2d");
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const total = correct + incorrect || 1;
+  let start = -Math.PI / 2;
+
+  [
+    [correct, "#21865b"],
+    [incorrect, "#d9534f"]
+  ].forEach(([value, color]) => {
+    const end = start + 2 * Math.PI * value / total;
+
+    ctx.beginPath();
+    ctx.moveTo(160, 120);
+    ctx.arc(160, 120, 85, start, end);
+    ctx.closePath();
+    ctx.fillStyle = color;
+    ctx.fill();
+
+    start = end;
+  });
+
+  ctx.fillStyle = "#202124";
+  ctx.font = "bold 15px Arial";
+  ctx.textAlign = "center";
+  ctx.fillText(
+    `${Math.round(correct / total * 100)}% de acertos`,
+    160, 225
+  );
+
+  ctx.font = "13px Arial";
+  ctx.fillText(
+    `Acertos ${correct} · Erros ${incorrect}`,
+    160, 245
+  );
+}
+
+function grade() {
+  let right = 0;
+  const bySubject = {};
+  const byTopic = {};
+  const answerContainer = document.getElementById("answers");
+
+  answerContainer.innerHTML = "";
+
+  questions.forEach((q, i) => {
+    const selected = document.querySelector(
+      `input[name="q${i}"]:checked`
+    );
+
+    const value = selected ? Number(selected.value) : -1;
+    const correct = value === q.a;
+
+    if (correct) right++;
+
+    bySubject[q.s] ??= {ok:0,total:0};
+    bySubject[q.s].total++;
+    if (correct) bySubject[q.s].ok++;
+
+    byTopic[q.t] ??= {ok:0,total:0};
+    byTopic[q.t].total++;
+    if (correct) byTopic[q.t].ok++;
+
+    const box = document.createElement("div");
+    box.className = "answer";
+
+    box.innerHTML = `
+      <b>Questão ${i + 1} — ${q.t}</b>
+      <p class="${correct ? "correct" : "wrong"}">
+        ${
+          correct
+            ? "Resposta correta."
+            : `Sua resposta: ${
+                value < 0 ? "não respondida" : letters[value]
+              }. Correta: ${letters[q.a]}.`
+        }
+      </p>
+      <p><b>Comentário:</b> ${q.e}</p>
+    `;
+
+    answerContainer.appendChild(box);
+  });
+
+  document.getElementById("results").classList.remove("hidden");
+
+  document.getElementById("totalScore").textContent =
+    `${right}/40 (${(right/40*100).toFixed(0)}%)`;
+
+  document.getElementById("summary").textContent =
+    right >= 32
+      ? "Bom desempenho. Consolide os conteúdos com erros e pratique questões contextualizadas."
+      : right >= 24
+        ? "Desempenho intermediário. Priorize os tópicos com menor percentual e refaça os itens errados."
+        : "Use o resultado como diagnóstico: revise conceitos básicos e resolva exercícios graduais antes de repetir o simulado.";
+
+  pie(right, 40 - right);
+
+  document.getElementById("subjects").innerHTML =
+    Object.entries(bySubject).map(([subject, value]) => `
+      <p><b>${subject}:</b> ${value.ok}/${value.total}
+      (${Math.round(value.ok/value.total*100)}%)</p>
+      <div class="meter">
+        <span style="width:${value.ok/value.total*100}%"></span>
+      </div>
+    `).join("");
+
+  const topics = Object.entries(byTopic).sort(
+    (a,b) => a[1].ok/a[1].total - b[1].ok/b[1].total
+  );
+
+  document.getElementById("topics").innerHTML =
+    topics.map(([topic, value]) => `
+      <p><b>${topic}</b> — ${value.ok}/${value.total}</p>
+      <div class="meter">
+        <span style="width:${value.ok/value.total*100}%"></span>
+      </div>
+    `).join("");
+
+  const weak = topics.filter(([topic,value]) =>
+    value.ok < value.total
+  );
+
+  const strong = topics.filter(([topic,value]) =>
+    value.ok === value.total
+  );
+
+  document.getElementById("study").innerHTML = `
+    <p><b>Maior facilidade observada:</b>
+    ${
+      strong.length
+        ? strong.map(item => item[0]).join(", ")
+        : "nenhum tópico com acerto total; mantenha revisão distribuída."
+    }</p>
+
+    <p><b>Prioridades:</b>
+    ${
+      weak.length
+        ? weak.slice(0,5).map(item => item[0]).join(", ")
+        : "reforçar os tópicos que apresentaram erros ou dúvidas."
+    }</p>
+
+    <ol>
+      <li>Revise a regra ou o conceito de cada prioridade por 15 a 20 minutos.</li>
+      <li>Resolva 5 exercícios básicos e depois 5 contextualizados por tópico.</li>
+      <li>Anote o motivo de cada erro: interpretação, conceito, cálculo ou atenção.</li>
+      <li>Refaça as questões erradas em 48 horas e repita um bloco semelhante após uma semana.</li>
+    </ol>
+
+    <p class="small">
+      O diagnóstico é baseado somente nas respostas desta tentativa.
+      Tópicos com uma questão são indicadores iniciais, não uma avaliação
+      definitiva de domínio.
+    </p>
+  `;
+
+  document.getElementById("results").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+document.getElementById("grade").addEventListener("click", grade);
+
+document.getElementById("reset").addEventListener("click", () => {
+  if (confirm("Apagar respostas e recomeçar?")) {
+    location.reload();
+  }
+});
+
+render();
+</script>
+
+</body>
+</html>
