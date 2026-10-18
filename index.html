@@ -7,310 +7,61 @@
 
 <style>
 :root {
-  --orange: #f58220;
-  --dark: #171717;
-  --cream: #fff8f0;
-  --blue: #164e8a;
-  --green: #20734b;
-  --red: #b42318;
+  --orange:#f58220;
+  --dark:#171717;
+  --cream:#fff8f0;
+  --blue:#164e8a;
+  --green:#20734b;
+  --red:#b42318;
 }
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background: #f3f4f6;
-  color: #202124;
-  font: 16px/1.6 Arial, sans-serif;
-}
-
-.wrap {
-  max-width: 1000px;
-  margin: auto;
-  padding: 18px;
-}
-
-.hero {
-  background: #080808;
-  color: white;
-  border-radius: 16px;
-  padding: 22px;
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  flex-wrap: wrap;
-  border-bottom: 6px solid var(--orange);
-}
-
-.hero img {
-  width: min(100%, 400px);
-  max-height: 140px;
-  object-fit: contain;
-}
-
-.hero h1 {
-  margin: 0;
-  color: #ff9b39;
-  font-size: clamp(1.5rem, 3vw, 2.4rem);
-}
-
-.panel {
-  background: white;
-  border-radius: 14px;
-  padding: 22px;
-  margin: 18px 0;
-  box-shadow: 0 3px 14px #0000000c;
-}
-
-.tag, .pill {
-  display: inline-block;
-  background: #fff0df;
-  color: #8c4300;
-  border-radius: 30px;
-  padding: 4px 10px;
-  font-size: .82rem;
-  font-weight: bold;
-}
-
-.instructions {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 12px;
-}
-
-.tile {
-  background: var(--cream);
-  border-left: 4px solid var(--orange);
-  padding: 12px;
-  border-radius: 8px;
-}
-
-.bar {
-  height: 9px;
-  background: #e5e7eb;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.bar span {
-  display: block;
-  height: 100%;
-  width: 0;
-  background: var(--orange);
-  transition: width .2s;
-}
-
-.qcard {
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 18px;
-  margin: 15px 0;
-}
-
-.qcard h3 {
-  font-size: 1.05rem;
-  margin: 10px 0;
-}
-
-.opts {
-  display: grid;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.opts label {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  border: 1px solid #d7dce2;
-  padding: 10px;
-  border-radius: 9px;
-  cursor: pointer;
-}
-
-.opts label:hover {
-  border-color: var(--orange);
-  background: #fffaf5;
-}
-
-.opts input {
-  margin-top: 5px;
-  accent-color: var(--orange);
-}
-
-button {
-  background: var(--orange);
-  color: #171717;
-  border: 0;
-  border-radius: 9px;
-  padding: 12px 18px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-button.secondary {
-  background: #202124;
-  color: white;
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.small {
-  font-size: .9rem;
-  color: #5f6368;
-}
-
-.visual {
-  border-radius: 12px;
-  background: #f8fafc;
-  padding: 14px;
-  margin: 12px 0;
-  overflow-x: auto;
-  border: 1px solid #e2e8f0;
-}
-
-.visual figure {
-  margin: 0;
-}
-
-.visual svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-width: 720px;
-  margin: auto;
-}
-
-.visual figcaption {
-  font-size: .82rem;
-  color: #5f6368;
-  margin-top: 8px;
-}
-
-.visual table {
-  border-collapse: collapse;
-  width: 100%;
-  min-width: 260px;
-  margin: 10px 0;
-}
-
-.visual td,
-.visual th {
-  border: 1px solid #cbd5e1;
-  padding: 8px;
-  text-align: center;
-}
-
-.visual th {
-  background: #e7eff8;
-}
-
-.poster {
-  max-width: 620px;
-  margin: auto;
-}
-
-.visual-flex {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.visual-flex > div {
-  flex: 1;
-  min-width: 160px;
-}
-
-.metric {
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: var(--blue);
-}
-
-.answer {
-  background: #f7f9fc;
-  border-left: 4px solid var(--blue);
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 6px;
-}
-
-.correct {
-  color: var(--green);
-  font-weight: bold;
-}
-
-.wrong {
-  color: var(--red);
-  font-weight: bold;
-}
-
-.hidden {
-  display: none;
-}
-
-.resultgrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
-}
-
-.score {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--blue);
-}
-
-.chartbox {
-  max-width: 330px;
-  margin: auto;
-}
-
-canvas {
-  width: 100%;
-  height: auto;
-}
-
-.meter {
-  height: 12px;
-  background: #eee;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.meter span {
-  display: block;
-  height: 100%;
-  background: var(--blue);
-}
-
-footer {
-  text-align: center;
-  color: #666;
-  font-size: .85rem;
-  padding: 24px;
-}
-
-@media (max-width: 600px) {
-  .wrap {
-    padding: 10px;
-  }
-
-  .panel {
-    padding: 15px;
-  }
-
-  .qcard {
-    padding: 13px;
-  }
+*{box-sizing:border-box}
+body{margin:0;background:#f3f4f6;color:#202124;font:16px/1.6 Arial,sans-serif}
+.wrap{max-width:1000px;margin:auto;padding:18px}
+.hero{background:#080808;color:white;border-radius:16px;padding:22px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;border-bottom:6px solid var(--orange)}
+.hero img{width:min(100%,400px);max-height:140px;object-fit:contain}
+.hero h1{margin:0;color:#ff9b39;font-size:clamp(1.5rem,3vw,2.4rem)}
+.panel{background:white;border-radius:14px;padding:22px;margin:18px 0;box-shadow:0 3px 14px #0000000c}
+.tag,.pill{display:inline-block;background:#fff0df;color:#8c4300;border-radius:30px;padding:4px 10px;font-size:.82rem;font-weight:bold}
+.instructions{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.tile{background:var(--cream);border-left:4px solid var(--orange);padding:12px;border-radius:8px}
+.bar{height:9px;background:#e5e7eb;border-radius:20px;overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:var(--orange);transition:width .2s}
+.qcard{border:1px solid #e5e7eb;border-radius:12px;padding:18px;margin:15px 0}
+.qcard h3{font-size:1.05rem;margin:10px 0}
+.opts{display:grid;gap:8px;margin-top:12px}
+.opts label{display:flex;gap:10px;align-items:flex-start;border:1px solid #d7dce2;padding:10px;border-radius:9px;cursor:pointer}
+.opts label:hover{border-color:var(--orange);background:#fffaf5}
+.opts input{margin-top:5px;accent-color:var(--orange)}
+button{background:var(--orange);color:#171717;border:0;border-radius:9px;padding:12px 18px;font-weight:bold;cursor:pointer;font-size:1rem}
+button.secondary{background:#202124;color:white}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.small{font-size:.9rem;color:#5f6368}
+.visual{border-radius:12px;background:#f8fafc;padding:14px;margin:12px 0;overflow-x:auto;border:1px solid #e2e8f0}
+.visual figure{margin:0}
+.visual svg{display:block;width:100%;height:auto;max-width:760px;margin:auto}
+.visual figcaption{font-size:.82rem;color:#5f6368;margin-top:8px}
+.visual table{border-collapse:collapse;width:100%;min-width:260px;margin:10px 0}
+.visual td,.visual th{border:1px solid #cbd5e1;padding:8px;text-align:center}
+.visual th{background:#e7eff8}
+.poster{max-width:620px;margin:auto}
+.visual-flex{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.visual-flex>div{flex:1;min-width:160px}
+.metric{font-size:1.4rem;font-weight:800;color:var(--blue)}
+.answer{background:#f7f9fc;border-left:4px solid var(--blue);padding:12px;margin:10px 0;border-radius:6px}
+.correct{color:var(--green);font-weight:bold}
+.wrong{color:var(--red);font-weight:bold}
+.hidden{display:none}
+.resultgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.score{font-size:2rem;font-weight:800;color:var(--blue)}
+.chartbox{max-width:330px;margin:auto}
+canvas{width:100%;height:auto}
+.meter{height:12px;background:#eee;border-radius:12px;overflow:hidden}
+.meter span{display:block;height:100%;background:var(--blue)}
+footer{text-align:center;color:#666;font-size:.85rem;padding:24px}
+@media(max-width:600px){
+  .wrap{padding:10px}
+  .panel{padding:15px}
+  .qcard{padding:13px}
 }
 </style>
 </head>
@@ -319,10 +70,8 @@ footer {
 <main class="wrap">
 
 <header class="hero">
-  <img
-    src="Logo preparatorio1.jpeg"
-    alt="Professora Samanta — Cursos Preparatórios"
-  >
+  <img src="Logo preparatorio1.jpeg"
+       alt="Professora Samanta — Cursos Preparatórios">
   <div>
     <h1>Simulado SESI-PE 2027</h1>
     <p>Ensino Médio Integrado</p>
@@ -333,23 +82,19 @@ footer {
 
 <section class="panel">
   <h2>Orientações antes de começar</h2>
-
   <div class="instructions">
     <div class="tile">
       <b>01 · Organização</b><br>
       São 20 questões de Português e 20 de Matemática.
     </div>
-
     <div class="tile">
       <b>02 · Tempo sugerido</b><br>
       Reserve 2 horas para responder e revisar.
     </div>
-
     <div class="tile">
       <b>03 · Marcação</b><br>
       Escolha apenas uma alternativa por questão.
     </div>
-
     <div class="tile">
       <b>04 · Correção</b><br>
       Ao finalizar, veja os comentários e o diagnóstico.
@@ -366,10 +111,7 @@ footer {
     <b id="progressText">0 de 40 respondidas</b>
     <span class="small">Progresso</span>
   </div>
-
-  <div class="bar">
-    <span id="progress"></span>
-  </div>
+  <div class="bar"><span id="progress"></span></div>
 </section>
 
 <section class="panel">
@@ -395,10 +137,7 @@ footer {
     <button id="grade">Corrigir simulado</button>
     <button class="secondary" id="reset">Refazer do zero</button>
   </div>
-
-  <p class="small">
-    As respostas são processadas localmente no navegador.
-  </p>
+  <p class="small">As respostas são processadas localmente no navegador.</p>
 </section>
 
 <section id="results" class="panel hidden">
@@ -412,12 +151,8 @@ footer {
     </div>
 
     <div class="chartbox">
-      <canvas
-        id="pie"
-        width="320"
-        height="270"
-        aria-label="Gráfico de pizza de acertos e erros"
-      ></canvas>
+      <canvas id="pie" width="320" height="270"
+        aria-label="Gráfico de acertos e erros"></canvas>
       <p class="small" style="text-align:center">
         Distribuição de acertos e erros
       </p>
@@ -429,7 +164,6 @@ footer {
       <h3>Por disciplina</h3>
       <div id="subjects"></div>
     </div>
-
     <div>
       <h3>Conteúdos por desempenho</h3>
       <div id="topics"></div>
@@ -446,7 +180,6 @@ footer {
 <footer>
   Curso Preparatório Professora Samanta • Simulado autoral
 </footer>
-
 </main>
 
 <script>
@@ -459,7 +192,7 @@ a:1,e:"O cartaz combina convite, data e atividades para incentivar a comunidade 
 },
 {
 s:"Português",t:"Gêneros textuais",
-q:"O jornal da escola publica uma matéria sobre o desperdício de água. O texto apresenta números de uma pesquisa, entrevista estudantes e inclui a fala de uma especialista. Qual gênero textual é o mais provável?",
+q:"O jornal da escola publica uma matéria sobre o uso de garrafas reutilizáveis e descartáveis. O texto apresenta números de uma pesquisa, entrevista estudantes e inclui a fala de uma especialista. Qual gênero textual é o mais provável?",
 o:["Conto","Receita","Reportagem","Poema lírico","Bilhete pessoal"],
 a:2,e:"A reportagem aprofunda um assunto, reunindo dados, entrevistas e diferentes fontes."
 },
@@ -496,8 +229,8 @@ a:2,e:"O pronome pessoal “eles” retoma o grupo de estudantes mencionado ante
 {
 s:"Português",t:"Verbo e advérbio",
 q:"No relatório de uma equipe de robótica, aparece a frase: “A equipe apresentou rapidamente o protótipo aos visitantes”. A palavra “rapidamente” indica:",
-o:["Quem respondeu","O que foi respondido","Quando a equipe foi criada","O modo como respondeu","A quantidade de equipes"],
-a:3,e:"O advérbio “rapidamente” modifica o verbo “apresentou” e indica o modo como a ação ocorreu."
+o:["Quem apresentou o protótipo","O protótipo apresentado","Quando a equipe foi criada","O modo como a equipe apresentou o protótipo","A quantidade de equipes"],
+a:3,e:"O advérbio “rapidamente” modifica o verbo “apresentou” e indica o modo como a equipe realizou a ação."
 },
 {
 s:"Português",t:"Conjunção",
@@ -571,7 +304,6 @@ q:"Durante um jogo ao ar livre, a partida foi interrompida pela chuva. A notíci
 o:["Finalidade","Causa","Tempo","Consequência","Condição"],
 a:2,e:"A oração “Quando a chuva parou” situa no tempo o recomeço do jogo."
 },
-
 {
 s:"Matemática",t:"Frações e decimais",
 q:"Uma campanha de arrecadação estabeleceu a meta de 250 kg de alimentos. A turma já alcançou 3/5 da meta. Quantos quilogramas foram arrecadados?",
@@ -664,9 +396,9 @@ a:2,e:"1 m² = 10 000 cm². Logo, 2,5 m² = 25 000 cm²."
 },
 {
 s:"Matemática",t:"Ângulos",
-q:"Uma placa forma dois ângulos suplementares que medem x e 3x. Qual é a medida do maior ângulo?",
+q:"Em uma placa de sinalização, dois ângulos adjacentes formam um ângulo raso. Suas medidas são x e 3x. Qual é a medida do maior desses ângulos?",
 o:["45°","90°","120°","135°","150°"],
-a:3,e:"x + 3x = 180°. Assim, x = 45° e o maior ângulo mede 3 × 45° = 135°."
+a:3,e:"Como os ângulos adjacentes formam um ângulo raso, x + 3x = 180°. Logo, x = 45° e o maior ângulo mede 3x = 135°."
 },
 {
 s:"Matemática",t:"Triângulo retângulo",
@@ -695,74 +427,55 @@ a:1,e:"Há 12 + 8 + 20 = 40 votos. A probabilidade é 8/40 = 20%."
 ];
 
 function visual(i) {
-  const poster = `
+  const n = i + 1;
+
+  // Questões que devem ser apresentadas sem elemento gráfico.
+  if ([21,24,25,27,28,29,30,31,32,35,38].includes(n)) return "";
+
+  if (n === 1) return `
   <div class="visual">
     <figure class="poster">
-      <svg viewBox="0 0 640 260" role="img"
-      aria-label="Cartaz Praça Viva">
+      <svg viewBox="0 0 640 260" role="img" aria-label="Cartaz Praça Viva">
         <rect width="640" height="260" rx="16" fill="#123f34"/>
         <rect x="14" y="14" width="612" height="232" rx="12" fill="#fef3c7"/>
         <circle cx="550" cy="65" r="24" fill="#f58220"/>
-        <path d="M30 210 Q150 150 260 210 T600 210 V230 H30Z"
-        fill="#8ecf8b"/>
-        <text x="35" y="48" font-size="17" fill="#123f34">
-          CAMPANHA DA COMUNIDADE
-        </text>
-        <text x="35" y="98" font-size="42" font-weight="900"
-        fill="#123f34">PRAÇA VIVA!</text>
-        <text x="35" y="132" font-size="20" fill="#123f34">
-          Sábado • 16h
-        </text>
-        <text x="35" y="161" font-size="16" fill="#123f34">
-          Música, feira de troca e atividades para famílias.
-        </text>
-        <rect x="35" y="183" width="300" height="37" rx="18"
-        fill="#f58220"/>
-        <text x="185" y="207" text-anchor="middle"
-        font-size="15" font-weight="800" fill="#171717">
-          O espaço é de todos. Participe!
-        </text>
+        <path d="M30 210 Q150 150 260 210 T600 210 V230 H30Z" fill="#8ecf8b"/>
+        <text x="35" y="48" font-size="17" fill="#123f34">CAMPANHA DA COMUNIDADE</text>
+        <text x="35" y="98" font-size="42" font-weight="900" fill="#123f34">PRAÇA VIVA!</text>
+        <text x="35" y="132" font-size="20" fill="#123f34">Sábado • 16h</text>
+        <text x="35" y="161" font-size="16" fill="#123f34">Música, feira de troca e atividades para famílias.</text>
+        <rect x="35" y="183" width="300" height="37" rx="18" fill="#f58220"/>
+        <text x="185" y="207" text-anchor="middle" font-size="15" font-weight="800" fill="#171717">O espaço é de todos. Participe!</text>
       </svg>
-      <figcaption>
-        Cartaz ilustrativo produzido para o simulado.
-        Observe o slogan, a data e o convite ao público.
-      </figcaption>
+      <figcaption>Cartaz ilustrativo produzido para o simulado. Observe o slogan, a data e o convite ao público.</figcaption>
     </figure>
   </div>`;
 
-  if (i === 0) return poster;
-
-  if (i === 1) return `
+  if (n === 2) return `
   <div class="visual">
-    <b>Pesquisa do jornal escolar</b>
+    <b>Pesquisa do jornal escolar: uso de garrafas</b>
     <table>
       <tr><th>Informação</th><th>Resultado</th></tr>
       <tr><td>Uso de garrafas reutilizáveis</td><td>62%</td></tr>
       <tr><td>Compra de garrafas descartáveis</td><td>38%</td></tr>
     </table>
-    <p class="small">
-      A matéria também entrevista estudantes e uma especialista.
-    </p>
+    <p class="small">A matéria também entrevista estudantes e uma especialista.</p>
   </div>`;
 
-  if (i === 3) return `
+  if (n === 4) return `
   <div class="visual">
     <b>Coleta seletiva na escola</b>
     <div class="visual-flex">
-      <div style="padding:18px;background:#247a4b;color:white;
-      text-align:center;border-radius:9px">PAPEL</div>
-      <div style="padding:18px;background:#e9b949;
-      text-align:center;border-radius:9px">PLÁSTICO</div>
-      <div style="padding:18px;background:#3575bb;color:white;
-      text-align:center;border-radius:9px">METAL</div>
+      <div style="padding:18px;background:#247a4b;color:white;text-align:center;border-radius:9px">PAPEL</div>
+      <div style="padding:18px;background:#e9b949;text-align:center;border-radius:9px">PLÁSTICO</div>
+      <div style="padding:18px;background:#3575bb;color:white;text-align:center;border-radius:9px">METAL</div>
     </div>
     <p>Reduzir resíduos e estimular hábitos responsáveis.</p>
   </div>`;
 
-  if (i === 4) return `
+  if (n === 5) return `
   <div class="visual">
-    <div class="poster" style="background:#fff0df;padding:22px;
-    border-radius:12px;text-align:center">
+    <div class="poster" style="background:#fff0df;padding:22px;border-radius:12px;text-align:center">
       <span class="pill">CAMPANHA AMBIENTAL</span>
       <h2>LEVE SUA GARRAFA</h2>
       <h3 style="color:#247a4b">Menos plástico, mais futuro!</h3>
@@ -770,29 +483,15 @@ function visual(i) {
     </div>
   </div>`;
 
-  if (i === 14) return `
+  if (n === 15) return `
   <div class="visual">
-    <div style="background:#123f34;color:#fff8f0;padding:22px;
-    border-radius:12px;text-align:center">
+    <div style="background:#123f34;color:#fff8f0;padding:22px;border-radius:12px;text-align:center">
       <h3>CLUBE DE LEITURA</h3>
-      <p style="font-size:1.35rem;font-weight:800">
-        A leitura é uma janela para outros mundos.
-      </p>
+      <p style="font-size:1.35rem;font-weight:800">A leitura é uma janela para outros mundos.</p>
     </div>
   </div>`;
 
-  if (i === 20) return `
-  <div class="visual">
-    <b>Meta solidária: 250 kg</b>
-    <p>Progresso: 3/5 da meta</p>
-    <div style="height:22px;background:#e5e7eb;border-radius:99px;
-    overflow:hidden">
-      <div style="height:100%;width:60%;background:#f58220"></div>
-    </div>
-    <p class="small">Cada quinto equivale a 250 ÷ 5 kg.</p>
-  </div>`;
-
-  if (i === 21) return `
+  if (n === 22) return `
   <div class="visual">
     <b>Materiais disponíveis</b>
     <table>
@@ -800,91 +499,10 @@ function visual(i) {
       <tr><td>Cadernos</td><td>48</td></tr>
       <tr><td>Lápis</td><td>60</td></tr>
     </table>
-    Todos os kits devem ser iguais e não pode haver sobras.
+    <p>Todos os kits devem ser iguais e não pode haver sobras.</p>
   </div>`;
 
-  if (i === 23) return `
-  <div class="visual">
-    <span class="pill">Valor medido</span>
-    <p class="metric">4 500 000 m</p>
-    <p>Forma compacta:</p>
-    <p class="metric">4,5 × 10⁶ m</p>
-  </div>`;
-
-  if (i === 24 || i === 31) return `
-  <div class="visual">
-    <div class="visual-flex">
-      <div>
-        <b>${i === 24 ? "Ingresso da feira" : "Mochila escolar"}</b>
-        <p class="metric">${i === 24 ? "R$ 37 pagos" : "R$ 160,00"}</p>
-      </div>
-      <div style="background:#247a4b;color:white;padding:20px;
-      border-radius:10px;text-align:center">
-        <b>${i === 24 ? "DESCONTO" : "DESCONTO DE"}</b>
-        <div class="metric" style="color:white">
-          ${i === 24 ? "R$ 8" : "15%"}
-        </div>
-      </div>
-    </div>
-  </div>`;
-
-  if (i === 26) return `
-  <div class="visual">
-    <b>Preços da cantina</b>
-    <table>
-      <tr><th>Pedido</th><th>Itens</th><th>Total</th></tr>
-      <tr><td>1</td><td>2 sucos + 1 sanduíche</td><td>R$ 19</td></tr>
-      <tr><td>2</td><td>1 suco + 1 sanduíche</td><td>R$ 12</td></tr>
-    </table>
-  </div>`;
-
-  if (i === 27) return `
-  <div class="visual">
-    <div class="visual-flex">
-      ${[5,9,13,17].map(n => `
-        <div style="flex:1;background:#dceafe;color:#164e8a;
-        font-size:1.5rem;font-weight:800;text-align:center;
-        padding:12px;border-radius:8px">${n}</div>
-      `).join("")}
-      <div style="font-size:1.5rem">…</div>
-    </div>
-    <p class="small">Observe o aumento constante entre os termos.</p>
-  </div>`;
-
-  if (i === 28) return `
-  <div class="visual">
-    <b>Mapa esquemático da trilha ecológica</b>
-    <div style="background:#eef6f1;padding:20px;border-radius:10px">
-      PORTÃO
-      <div style="height:6px;background:#65a66e;
-      margin:14px 0;border-radius:10px"></div>
-      MIRANTE
-    </div>
-    <p>Escala: 2 cm no mapa = 5 km reais.</p>
-  </div>`;
-
-  if (i === 29) return `
-  <div class="visual">
-    <b>Distribuição proporcional de R$ 600</b>
-    <div class="visual-flex">
-      <div style="flex:2;background:#164e8a;color:white;
-      padding:14px;text-align:center;border-radius:8px">2 partes</div>
-      <div style="flex:3;background:#f58220;color:#171717;
-      padding:14px;text-align:center;border-radius:8px">3 partes</div>
-    </div>
-    <p class="small">O total representa 5 partes iguais.</p>
-  </div>`;
-
-  if (i === 30) return `
-  <div class="visual">
-    <div class="visual-flex">
-      <div><b>4 impressoras</b><p>600 páginas</p><p>5 minutos</p></div>
-      <div style="font-size:1.5rem">→</div>
-      <div><b>2 impressoras</b><p>? páginas</p><p>5 minutos</p></div>
-    </div>
-  </div>`;
-
-  if (i === 32) return `
+  if (n === 33) return `
   <div class="visual">
     <b>Notas das avaliações</b>
     <table>
@@ -896,98 +514,83 @@ function visual(i) {
     </table>
   </div>`;
 
-  if (i === 33) return `
+  if (n === 34) return `
   <div class="visual">
     <b>Custo de uma corrida</b>
-    <svg viewBox="0 0 500 170" role="img"
-    aria-label="Gráfico crescente do custo conforme a distância">
-      <path d="M45 20V135H470" stroke="#475569" stroke-width="2"
-      fill="none"/>
-      <path d="M45 120L140 100L235 80L330 60L425 40"
-      stroke="#f58220" stroke-width="4" fill="none"/>
-      <text x="10" y="20" font-size="12" fill="#164e8a">Custo</text>
-      <text x="365" y="160" font-size="12" fill="#164e8a">Distância</text>
-      <text x="250" y="25" font-size="13" fill="#202124">C(x)=5+2x</text>
+    <svg viewBox="0 0 500 190" role="img" aria-label="Gráfico esquemático do custo em função da distância">
+      <path d="M55 20V145H465" stroke="#475569" stroke-width="2" fill="none"/>
+      <path d="M55 125L145 105L235 85L325 65L415 45" stroke="#f58220" stroke-width="4" fill="none"/>
+      <text x="8" y="20" font-size="12" fill="#164e8a">Custo</text>
+      <text x="350" y="175" font-size="12" fill="#164e8a">Distância</text>
+      <text x="220" y="25" font-size="14" fill="#202124">C(x) = 5 + 2x</text>
     </svg>
   </div>`;
 
-  if (i === 34) return `
+  if (n === 36) return `
   <div class="visual">
-    <b>Referência para conversões</b>
-    <table>
-      <tr><th>Unidade</th><th>Equivalência</th></tr>
-      <tr><td>1 m</td><td>100 cm</td></tr>
-      <tr><td>1 m²</td><td>10 000 cm²</td></tr>
-      <tr><td>1 L</td><td>1 000 mL</td></tr>
-      <tr><td>1 m³</td><td>1 000 L</td></tr>
-    </table>
-  </div>`;
-
-  if (i === 35) return `
-  <div class="visual">
-    <b>Ângulos suplementares</b>
-    <svg viewBox="0 0 500 160" role="img"
-    aria-label="Ângulos x e 3x sobre uma linha reta">
-      <path d="M30 120H470" stroke="#475569" stroke-width="3"/>
-      <path d="M250 120L140 25M250 120L370 25"
-      stroke="#164e8a" stroke-width="4"/>
-      <text x="170" y="100" font-size="22" fill="#8c4300">x</text>
-      <text x="310" y="100" font-size="22" fill="#8c4300">3x</text>
-      <text x="250" y="150" text-anchor="middle"
-      font-size="14" fill="#475569">Linha reta: 180°</text>
+    <b>Ângulos adjacentes sobre uma linha reta</b>
+    <svg viewBox="0 0 520 190" role="img" aria-label="Uma linha reta dividida por uma semirreta em dois ângulos adjacentes x e 3x">
+      <path d="M25 130H495" stroke="#475569" stroke-width="3" fill="none"/>
+      <path d="M260 130L190 60" stroke="#164e8a" stroke-width="4" fill="none"/>
+      <path d="M220 130 A40 40 0 0 1 232 102" stroke="#f58220" stroke-width="3" fill="none"/>
+      <path d="M300 130 A40 40 0 0 0 232 102" stroke="#20734b" stroke-width="3" fill="none"/>
+      <text x="218" y="116" font-size="20" font-weight="700" fill="#b45309">x</text>
+      <text x="285" y="92" font-size="20" font-weight="700" fill="#20734b">3x</text>
+      <text x="260" y="162" text-anchor="middle" font-size="15" fill="#475569">Ângulo raso: 180°</text>
     </svg>
+    <p class="small">Os dois ângulos são adjacentes e, juntos, formam um ângulo raso.</p>
   </div>`;
 
-  if (i === 36) return `
+  if (n === 37) return `
   <div class="visual">
     <b>Escada apoiada na parede</b>
-    <svg viewBox="0 0 500 180" role="img"
-    aria-label="Triângulo retângulo com base de 6 metros e hipotenusa de 10">
-      <path d="M60 145H340V20" stroke="#475569" stroke-width="4"
-      fill="none"/>
-      <path d="M60 145L340 20" stroke="#f58220" stroke-width="5"/>
-      <text x="175" y="168" font-size="16" fill="#164e8a">6 m</text>
-      <text x="200" y="65" font-size="16" fill="#8c4300">10 m</text>
-      <text x="355" y="90" font-size="16" fill="#164e8a">h = ?</text>
+    <svg viewBox="0 0 520 220" role="img" aria-label="Triângulo retângulo com base de 6 metros, escada de 10 metros e altura desconhecida">
+      <path d="M65 175H365V25" stroke="#475569" stroke-width="4" fill="none"/>
+      <path d="M65 175L365 25" stroke="#f58220" stroke-width="5" fill="none"/>
+      <path d="M345 175V155H365" stroke="#164e8a" stroke-width="2" fill="none"/>
+      <text x="190" y="202" font-size="17" fill="#164e8a">6 m</text>
+      <text x="190" y="85" font-size="17" fill="#b45309" transform="rotate(-27 190 85)">10 m</text>
+      <text x="380" y="105" font-size="17" fill="#164e8a">h = ?</text>
     </svg>
   </div>`;
 
-  if (i === 37) return `
+  if (n === 39) return `
   <div class="visual">
-    <b>Planta da horta</b>
-    <svg viewBox="0 0 500 190" role="img"
-    aria-label="Horta retangular de 12 por 7 metros com canteiro de 2 por 2 metros">
-      <rect x="70" y="35" width="350" height="120"
-      fill="#a8d5a2" stroke="#247a4b" stroke-width="3"/>
-      <rect x="290" y="90" width="55" height="55"
-      fill="#b98356" stroke="#754c2a" stroke-width="2"/>
-      <text x="245" y="25" text-anchor="middle"
-      font-size="16" fill="#164e8a">12 m</text>
-      <text x="28" y="100" font-size="15" fill="#164e8a">7 m</text>
-      <text x="315" y="120" text-anchor="middle"
-      font-size="12" fill="white">2 × 2 m</text>
+    <b>Caixa retangular (paralelepípedo)</b>
+    <svg viewBox="0 0 760 260" role="img" aria-label="Paralelepípedo com comprimento de 30 centímetros, largura de 20 centímetros e altura de 10 centímetros, cada medida identificada junto à dimensão correspondente">
+      <defs>
+        <marker id="arrLength" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto-start-reverse">
+          <path d="M0 0L7 3.5L0 7Z" fill="#164e8a"/>
+        </marker>
+        <marker id="arrWidth" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto-start-reverse">
+          <path d="M0 0L7 3.5L0 7Z" fill="#b45309"/>
+        </marker>
+        <marker id="arrHeight" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto-start-reverse">
+          <path d="M0 0L7 3.5L0 7Z" fill="#20734b"/>
+        </marker>
+      </defs>
+      <path d="M200 65H430L505 30H275Z" fill="#e8f1ff" stroke="#164e8a" stroke-width="2.5"/>
+      <path d="M200 65H430V165H200Z" fill="#c9dcfa" stroke="#164e8a" stroke-width="2.5"/>
+      <path d="M430 65L505 30V130L430 165Z" fill="#8eb2e7" stroke="#164e8a" stroke-width="2.5"/>
+
+      <path d="M200 178V192M430 178V192M205 188H425" stroke="#164e8a" stroke-width="2" fill="none"
+        marker-start="url(#arrLength)" marker-end="url(#arrLength)"/>
+      <text x="315" y="216" text-anchor="middle" font-size="17" font-weight="700" fill="#164e8a">COMPRIMENTO: 30 cm</text>
+
+      <path d="M188 65H165M188 165H165M170 70V160" stroke="#20734b" stroke-width="2" fill="none"
+        marker-start="url(#arrHeight)" marker-end="url(#arrHeight)"/>
+      <text x="18" y="105" font-size="16" font-weight="700" fill="#20734b">ALTURA</text>
+      <text x="18" y="126" font-size="16" font-weight="700" fill="#20734b">10 cm</text>
+
+      <path d="M445 48L520 13" stroke="#b45309" stroke-width="2" fill="none"
+        marker-start="url(#arrWidth)" marker-end="url(#arrWidth)"/>
+      <text x="535" y="28" font-size="16" font-weight="700" fill="#b45309">LARGURA</text>
+      <text x="535" y="49" font-size="16" font-weight="700" fill="#b45309">20 cm</text>
     </svg>
-    <p class="small">Subtraia a área do canteiro da área total.</p>
+    <p class="small">Volume = comprimento × largura × altura.</p>
   </div>`;
 
-  if (i === 38) return `
-  <div class="visual">
-    <b>Caixa retangular</b>
-    <svg viewBox="0 0 500 180" role="img"
-    aria-label="Caixa retangular com comprimento de 30, largura de 20 e altura de 10 centímetros">
-      <path d="M100 60L260 25L405 65L245 105Z"
-      fill="#dceafe" stroke="#164e8a" stroke-width="2"/>
-      <path d="M100 60V125L245 165V105Z"
-      fill="#b9d1f5" stroke="#164e8a" stroke-width="2"/>
-      <path d="M245 105V165L405 105V65Z"
-      fill="#8eb2e7" stroke="#164e8a" stroke-width="2"/>
-      <text x="170" y="48" font-size="15" fill="#164e8a">30 cm</text>
-      <text x="335" y="45" font-size="15" fill="#164e8a">20 cm</text>
-      <text x="270" y="150" font-size="15" fill="#164e8a">10 cm</text>
-    </svg>
-  </div>`;
-
-  if (i === 39) return `
+  if (n === 40) return `
   <div class="visual">
     <b>Votação para atividade de encerramento</b>
     <table>
@@ -997,12 +600,9 @@ function visual(i) {
       <tr><td>C — Piquenique</td><td>20</td></tr>
     </table>
     <div style="margin:12px 0">
-      <div>A <span style="display:inline-block;background:#164e8a;
-      width:30%;height:15px"></span> 12</div>
-      <div>B <span style="display:inline-block;background:#f58220;
-      width:20%;height:15px"></span> 8</div>
-      <div>C <span style="display:inline-block;background:#247a4b;
-      width:50%;height:15px"></span> 20</div>
+      <div>A <span style="display:inline-block;background:#164e8a;width:30%;height:15px"></span> 12</div>
+      <div>B <span style="display:inline-block;background:#f58220;width:20%;height:15px"></span> 8</div>
+      <div>C <span style="display:inline-block;background:#247a4b;width:50%;height:15px"></span> 20</div>
     </div>
   </div>`;
 
@@ -1015,15 +615,13 @@ function render() {
   const portuguese = document.getElementById("portuguese");
   const math = document.getElementById("math");
 
-  questions.forEach((q, i) => {
+  questions.forEach((q,i) => {
     const el = document.createElement("article");
     el.className = "qcard";
     el.id = "q" + i;
 
     el.innerHTML = `
-      <span class="tag">
-        Questão ${String(i + 1).padStart(2,"0")} · ${q.t}
-      </span>
+      <span class="tag">Questão ${i + 1}</span>
       <h3>${q.q}</h3>
       ${visual(i)}
       <div class="opts">
@@ -1056,44 +654,33 @@ function updateProgress() {
     (answered / 40 * 100) + "%";
 }
 
-function pie(correct, incorrect) {
+function pie(correct,incorrect) {
   const canvas = document.getElementById("pie");
   const ctx = canvas.getContext("2d");
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
 
   const total = correct + incorrect || 1;
   let start = -Math.PI / 2;
 
-  [
-    [correct, "#21865b"],
-    [incorrect, "#d9534f"]
-  ].forEach(([value, color]) => {
+  [[correct,"#21865b"],[incorrect,"#d9534f"]].forEach(([value,color]) => {
     const end = start + 2 * Math.PI * value / total;
-
     ctx.beginPath();
-    ctx.moveTo(160, 120);
-    ctx.arc(160, 120, 85, start, end);
+    ctx.moveTo(160,120);
+    ctx.arc(160,120,85,start,end);
     ctx.closePath();
     ctx.fillStyle = color;
     ctx.fill();
-
     start = end;
   });
 
   ctx.fillStyle = "#202124";
   ctx.font = "bold 15px Arial";
   ctx.textAlign = "center";
-  ctx.fillText(
-    `${Math.round(correct / total * 100)}% de acertos`,
-    160, 225
-  );
+  ctx.fillText(`${Math.round(correct/total*100)}% de acertos`,160,225);
 
   ctx.font = "13px Arial";
-  ctx.fillText(
-    `Acertos ${correct} · Erros ${incorrect}`,
-    160, 245
-  );
+  ctx.fillText(`Acertos ${correct} · Erros ${incorrect}`,160,245);
 }
 
 function grade() {
@@ -1104,11 +691,8 @@ function grade() {
 
   answerContainer.innerHTML = "";
 
-  questions.forEach((q, i) => {
-    const selected = document.querySelector(
-      `input[name="q${i}"]:checked`
-    );
-
+  questions.forEach((q,i) => {
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
     const value = selected ? Number(selected.value) : -1;
     const correct = value === q.a;
 
@@ -1126,14 +710,12 @@ function grade() {
     box.className = "answer";
 
     box.innerHTML = `
-      <b>Questão ${i + 1} — ${q.t}</b>
+      <b>Questão ${i + 1}</b>
       <p class="${correct ? "correct" : "wrong"}">
         ${
           correct
             ? "Resposta correta."
-            : `Sua resposta: ${
-                value < 0 ? "não respondida" : letters[value]
-              }. Correta: ${letters[q.a]}.`
+            : `Sua resposta: ${value < 0 ? "não respondida" : letters[value]}. Correta: ${letters[q.a]}.`
         }
       </p>
       <p><b>Comentário:</b> ${q.e}</p>
@@ -1154,10 +736,10 @@ function grade() {
         ? "Desempenho intermediário. Priorize os tópicos com menor percentual e refaça os itens errados."
         : "Use o resultado como diagnóstico: revise conceitos básicos e resolva exercícios graduais antes de repetir o simulado.";
 
-  pie(right, 40 - right);
+  pie(right,40-right);
 
   document.getElementById("subjects").innerHTML =
-    Object.entries(bySubject).map(([subject, value]) => `
+    Object.entries(bySubject).map(([subject,value]) => `
       <p><b>${subject}:</b> ${value.ok}/${value.total}
       (${Math.round(value.ok/value.total*100)}%)</p>
       <div class="meter">
@@ -1170,20 +752,15 @@ function grade() {
   );
 
   document.getElementById("topics").innerHTML =
-    topics.map(([topic, value]) => `
+    topics.map(([topic,value]) => `
       <p><b>${topic}</b> — ${value.ok}/${value.total}</p>
       <div class="meter">
         <span style="width:${value.ok/value.total*100}%"></span>
       </div>
     `).join("");
 
-  const weak = topics.filter(([topic,value]) =>
-    value.ok < value.total
-  );
-
-  const strong = topics.filter(([topic,value]) =>
-    value.ok === value.total
-  );
+  const weak = topics.filter(([topic,value]) => value.ok < value.total);
+  const strong = topics.filter(([topic,value]) => value.ok === value.total);
 
   document.getElementById("study").innerHTML = `
     <p><b>Maior facilidade observada:</b>
@@ -1214,14 +791,12 @@ function grade() {
     </p>
   `;
 
-  document.getElementById("results").scrollIntoView({
-    behavior:"smooth"
-  });
+  document.getElementById("results").scrollIntoView({behavior:"smooth"});
 }
 
-document.getElementById("grade").addEventListener("click", grade);
+document.getElementById("grade").addEventListener("click",grade);
 
-document.getElementById("reset").addEventListener("click", () => {
+document.getElementById("reset").addEventListener("click",() => {
   if (confirm("Apagar respostas e recomeçar?")) {
     location.reload();
   }
@@ -1229,6 +804,5 @@ document.getElementById("reset").addEventListener("click", () => {
 
 render();
 </script>
-
 </body>
 </html>
